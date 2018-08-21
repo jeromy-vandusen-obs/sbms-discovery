@@ -19,7 +19,7 @@ pipeline {
         stage('Build Container Image') {
             steps {
                 withMaven(maven: 'M3') {
-                    sh "mvn dockerfile:build dockerfile:tag@version -DskipTests
+                    sh "mvn dockerfile:build dockerfile:tag@version -DskipTests"
                 }
             }
         }

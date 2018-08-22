@@ -31,7 +31,9 @@ pipeline {
         stage('Push Image to Registry') {
             steps {
                 withMaven(maven: 'M3') {
-                    sh "mvn dockerfile:push dockerfile:push@version -DskipTests"
+                    withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_CREDENTIALS', usernameVariable: 'DOCKER_HUB_USERNAME', passwordVariable: 'DOCKER_HUB_PASSWORD')]) {
+                        sh "mvn dockerfile:push dockerfile:push@version -DskipTests -Ddockerfile.username=$DOCKER_HUB_USERNAME -Ddockerfile.password=$DOCKER_HUB_PASSWORD"
+                    }
                 }
             }
         }

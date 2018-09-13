@@ -3,7 +3,7 @@ FROM openjdk:8-jdk-alpine
 MAINTAINER Jeromy Van Dusen <jvandusen@obsglobal.com>
 
 ARG JAR_FILE
-ENV SERVER_PORT=8761
+ENV SERVER_PORT=8080
 
 VOLUME /tmp
 
